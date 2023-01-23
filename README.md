@@ -7,13 +7,8 @@ mPOS for [React Native](https://github.com/facebook/react-native) and support on
 ## TOC
 
 - [Installation](#installation)
-- [Linking](#linking)
+- [Android Dependencies](#android-dependencies)
 - [Usage](#usage)
-- [API](#api)
-- [Hooks & Events](#hooks--events)
-- [Troubleshooting](#troubleshooting)
-- [Release Notes](#release-notes)
-- [react-native-dom / react-native-web](#react-native-dom)
 
 
 ## Installation
@@ -28,6 +23,66 @@ or using yarn:
 
 ```shell
 yarn add react-native-instantpay-mpos
+```
+
+## Android Dependencies
+
+Importing SDK to your Android Application
+
+Add this in your root **build.gradle** at the end of repositories in **allprojects** section:
+
+```
+allprojects { 
+    repositories { 
+        maven { 
+            credentials { 
+                username 'myMavenRepo' 
+                password 'CredoPaySDK' 
+            } 
+            url "https://mymavenrepo.com/repo/nkkgWioPTZZyJhyjF9hy/" 
+        } 
+    } 
+}
+
+```
+
+Then reference the library in the dependency section: 
+
+```
+dependencies { 
+    implementation 'in.credopay.payment.sdk:vm30-payment-sdk:2.0.3' 
+}
+
+```
+
+**The SDK internally depends on the following libraries**
+
+```
+com.squareup.okhttp3:okhttp:3.12.1 
+com.squareup.retrofit2:retrofit:2.4.0 
+com.squareup.retrofit2:converter-gson:2.4.0
+
+```
+
+If your app conflicts with above dependencies, then you could exclude the library from 
+the SDK and then can be implemented externally.
+
+```
+dependencies {
+    implementation ('in.credopay.payment.sdk:vm30-payment-sdk:2.0.3')  
+    {
+        exclude module:'retrofit' 
+    }
+} 
+
+```
+
+## Usage
+
+Support methods list :
+1. disconnectDevice
+2. startTransaction
+
 
 ## Proguard
 
