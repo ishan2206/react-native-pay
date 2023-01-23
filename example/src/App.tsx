@@ -1,18 +1,36 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-instantpay-mpos';
+import { StyleSheet, View, Text, Button } from 'react-native';
+import { startTransaction } from 'react-native-instantpay-mpos';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  
+  const testModule = () => {
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+    /* InstantpayMpos.multiply(5,3).then(res => {
+        console.log(res);
+    }); */
+
+    let options = {
+        transactionType : 'PURCHASE',
+        debugMode : true,
+        production : true,
+        amount : 1,
+        loginId : "2000016248",
+        loginPassword : "Qwert@123",
+        mobile : "7845682531"
+    }
+
+    startTransaction(JSON.stringify(options)).then(res => {
+
+      console.log(res);
+
+    }); 
+}
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <Button title='Hello' onPress={() => testModule()} />
     </View>
   );
 }

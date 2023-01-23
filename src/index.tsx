@@ -16,7 +16,11 @@ const InstantpayMpos = NativeModules.InstantpayMpos
         },
       }
     );
+    
+export function disconnectDevice(): Promise<Object> {
+  return InstantpayMpos.disconnectDevice();
+}
 
-export function multiply(a: number, b: number): Promise<number> {
-  return InstantpayMpos.multiply(a, b);
+export function startTransaction(options:Object): Promise<Object> {
+  return InstantpayMpos.startTransaction(options);
 }
