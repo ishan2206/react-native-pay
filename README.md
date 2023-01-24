@@ -9,6 +9,8 @@ mPOS for [React Native](https://github.com/facebook/react-native) and support on
 - [Installation](#installation)
 - [Android Dependencies](#android-dependencies)
 - [Usage](#usage)
+- [Theming](#theming)
+- [Proguard](#proguard)
 
 
 ## Installation
@@ -79,9 +81,86 @@ dependencies {
 
 ## Usage
 
-Support methods list :
+Supported method list :
 1. disconnectDevice
 2. startTransaction
+
+```js
+
+import { disconnectDevice, startTransaction } from 'react-native-instantpay-mpos';
+
+
+//case
+
+let options = {
+    transactionType : 'PURCHASE',
+    debugMode : true,
+    amount : 1,
+    ...
+}
+
+startTransaction(JSON.stringify(options)).then(res => {
+    console.log(res);
+}); 
+
+
+```
+
+**Note about startTransaction Method**
+
+Possible options values : 
+
+| key               | Description                                        |  type      | required       |
+| ---------------   | -------------------------------------------------- | ---------- | -------------- |
+| transactionType   | Transaction Type                                   | string     | Mandatory      |
+| debugMode         | Debug Mode                                         | boolean    | Optional       |
+| production        | Enable for Production                              | boolean    | Mandatory      |
+| amount            | Amount                                             | int        | Mandatory      |
+| loginId           | Login Id for login                                 | string     | Mandatory      |
+| loginPassword     | Login password for login                           | string     | Mandatory      |
+| mobile            | mobile for sending SMS                             | string     | Mandatory      |
+| customerRefNo     | uniques for every trans.                           | string     | Optional       |
+| successTimeout    | Success dismiss timeout (2 sec default)            | int        | Optional       |
+| optional1         | Optional value                                     | string     | Optional       |
+| optional2         | Optional value                                     | string     | Optional       |
+| optional3         | Optional value                                     | string     | Optional       |
+| optional4         | Optional value                                     | string     | Optional       |
+| optional5         | Optional value                                     | string     | Optional       |
+| optional6         | Optional value                                     | string     | Optional       |
+| optional7         | Optional value                                     | string     | Optional       |
+| optional8         | Optional value                                     | string     | Optional       |
+| optional9         | Optional value                                     | string     | Optional       |
+| optional10        | Optional value                                     | string     | Optional       |
+| isLogo            | set logo in drawable folder with name **mposlogo** | boolean    | Optional       |
+
+--- 
+
+Note : 
+
+1. **Transaction Type**  possibel values : "PURCHASE", "MICROATM"
+2. Acceptable file formate for logo : png,jpg,jpeg
+3. use disconnectDevice method after every transactions.
+
+
+## Theming
+
+Colours can be overridden in colors.xml for your app.
+
+```
+<?xml version="1.0" encoding="utf-8"?> 
+<resources> 
+    <color name="credopayColorPrimary">#3E6698</color> 
+    <color name="credopayColorPrimaryDark">#264367</color> 
+    <color name="credopayColorSecondary">#33B900</color> 
+    <color name="credopayColorAccent">#D81B60</color> 
+    <color name="credopayColorRed">#FE4242</color> 
+    <color name="credopayColorWhite">#ffffff</color> 
+    <color name="credopayColorBlack">#000000</color> 
+    <color name="credopayColorBottomNavIconUnSelected">#B1B1B1</color> 
+    <color name="credopayColorLight">#f5f5f5</color> 
+</resources>
+
+```
 
 
 ## Proguard
