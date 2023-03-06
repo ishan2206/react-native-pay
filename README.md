@@ -41,8 +41,9 @@ allprojects {
                 username 'myMavenRepo' 
                 password 'CredoPaySDK' 
             } 
-            url "https://mymavenrepo.com/repo/nkkgWioPTZZyJhyjF9hy/" 
-        } 
+            url "https://mymavenrepo.com/repo/FrQdp1FhEvW3jjbX8Md4/" 
+        }
+        maven { url "https://jitpack.io" } 
     } 
 }
 
@@ -52,7 +53,7 @@ Then reference the library in the dependency section:
 
 ```
 dependencies { 
-    implementation 'in.credopay.payment.sdk:vm30-payment-sdk:2.0.3' 
+    implementation 'in.credopay.payment.sdk:vm30-payment-sdk:3.0.7' 
 }
 
 ```
@@ -60,8 +61,8 @@ dependencies {
 **The SDK internally depends on the following libraries**
 
 ```
-com.squareup.okhttp3:okhttp:3.12.1 
-com.squareup.retrofit2:retrofit:2.4.0 
+com.squareup.okhttp3:okhttp:3.12.1
+com.squareup.retrofit2:retrofit:2.4.0
 com.squareup.retrofit2:converter-gson:2.4.0
 
 ```
@@ -71,7 +72,7 @@ the SDK and then can be implemented externally.
 
 ```
 dependencies {
-    implementation ('in.credopay.payment.sdk:vm30-payment-sdk:2.0.3')  
+    implementation ('in.credopay.payment.sdk:vm30-payment-sdk:3.0.7')  
     {
         exclude module:'retrofit' 
     }
@@ -148,16 +149,16 @@ Colours can be overridden in colors.xml for your app.
 
 ```
 <?xml version="1.0" encoding="utf-8"?> 
-<resources> 
-    <color name="credopayColorPrimary">#3E6698</color> 
-    <color name="credopayColorPrimaryDark">#264367</color> 
-    <color name="credopayColorSecondary">#33B900</color> 
-    <color name="credopayColorAccent">#D81B60</color> 
-    <color name="credopayColorRed">#FE4242</color> 
-    <color name="credopayColorWhite">#ffffff</color> 
-    <color name="credopayColorBlack">#000000</color> 
-    <color name="credopayColorBottomNavIconUnSelected">#B1B1B1</color> 
-    <color name="credopayColorLight">#f5f5f5</color> 
+<resources>
+    <color name="credopayColorPrimary">#3E6698</color>
+    <color name="credopayColorPrimaryDark">#264367</color>  
+    <color name="credopayColorSecondary">#33B900</color>  
+    <color name="credopayColorAccent">#D81B60</color>
+    <color name="credopayColorRed">#FE4242</color>
+    <color name="credopayColorWhite">#ffffff</color>
+    <color name="credopayColorBlack">#000000</color>
+    <color name="credopayColorBottomNavIconUnSelected">#B1B1B1</color>  
+    <color name="credopayColorLight">#f5f5f5</color>
 </resources>
 
 ```
@@ -168,18 +169,38 @@ Colours can be overridden in colors.xml for your app.
 If you have enabled “minify”, you will need to add this config to your Proguard config
 
 ```
--keep class in.credopay.**{ 
-    <fields>; 
-    public <methods>; 
+#-keep class in.credopay.**{
+#   <fields>;
+#   public <methods>;
+#}
+#-keepclassmembers class in.credopay.** { <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.ApiRequest {  <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.ApiResponse {  <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.ApiRequest$IsoData { <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.ApiResponse$IsoData { <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.ApiResponse$IsoData { <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.ApiErrorResponse { <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.TransactionModel { <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.TransactionResponse { <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.UpiStatusResponse { <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.ApiResponse$TransactionSets { <fields>; }
+-keepclassmembers class in.credopay.payment.sdk.TransactionAggregateResponse { <fields>; }
+
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static int d(...);
+    public static int w(...);
+    public static int v(...);
+    public static int i(...);
+    public static int e(...);
+}
+-assumenosideeffects class timber.log.Timber* {
+    public static * d(...);
+    public static * w(...);
+    public static * v(...);
+    public static * i(...);
+    public static * e(...);
 } 
--keepclassmembers class in.credopay.** { <fields>; } 
--keepclassmembers class in.credopay.payment.sdk.ApiRequest { <fields>; } 
--keepclassmembers class in.credopay.payment.sdk.ApiResponse { <fields>; } 
--keepclassmembers class in.credopay.payment.sdk.ApiRequest$IsoData { <fields>; } 
--keepclassmembers class in.credopay.payment.sdk.ApiResponse$IsoData { <fields>; } 
--keepclassmembers class in.credopay.payment.sdk.ApiResponse$IsoData { <fields>; } 
--keepclassmembers class in.credopay.payment.sdk.ApiErrorResponse { <fields>; } 
--keepclassmembers class in.credopay.payment.sdk.TransactionModel { <fields>; } 
--keepclassmembers class in.credopay.payment.sdk.TransactionResponse { <fields>; } 
+
 ```
 
