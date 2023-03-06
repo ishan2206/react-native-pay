@@ -66,8 +66,9 @@ repositories {
       username 'myMavenRepo'
       password 'CredoPaySDK'
     }
-    url "https://mymavenrepo.com/repo/nkkgWioPTZZyJhyjF9hy/"
+    url "https://mymavenrepo.com/repo/FrQdp1FhEvW3jjbX8Md4/"
   }
+  maven { url "https://jitpack.io" }
 }
 
 def kotlin_version = getExtOrDefault("kotlinVersion")
@@ -78,7 +79,7 @@ dependencies {
   //noinspection GradleDynamicVersion
   implementation "com.facebook.react:react-native"
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-  implementation 'in.credopay.payment.sdk:vm30-payment-sdk:2.0.3'
+  implementation 'in.credopay.payment.sdk:vm30-payment-sdk:3.0.7'
 
 }
 
