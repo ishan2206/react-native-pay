@@ -135,6 +135,9 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             else if(getTransactionType == "UPI"){
                 intent.putExtra("TRANSACTION_TYPE", CredopayPaymentConstants.UPI);
             }
+            else if(getTransactionType == "BALANCE_ENQUIRY"){
+                intent.putExtra("TRANSACTION_TYPE", CredopayPaymentConstants.BALANCE_ENQUIRY);
+            }
 
             if(items.has("debugMode")){
                 intent.putExtra("DEBUG_MODE", items.getString("debugMode").toBoolean());
@@ -161,7 +164,7 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             }
 
             if(items.has("successTimeout")){
-                val getTimeSec = items.getString("successTimeout").toInt() * 1000;
+                val getTimeSec = (items.getString("successTimeout").toInt() * 1000)+"L";
                 intent.putExtra("SUCCESS_DISMISS_TIMEOUT", getTimeSec);
             }
 
@@ -268,7 +271,7 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
 
             val getTransactionType =  items.getString("transactionType").uppercase();
 
-            val listOfTransaction = arrayOf("PURCHASE", "UPI", "MICROATM");
+            val listOfTransaction = arrayOf("PURCHASE", "UPI", "MICROATM", "BALANCE_ENQUIRY");
 
             //Check Transaction Type
             if(!listOfTransaction.contains(getTransactionType)){
@@ -281,10 +284,14 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             }
 
             //Check Amount Key
-            if(!items.has("amount")){
-                return resolve("Missing Amount Key");
-            }
 
+            if(getTransactionType!="BALANCE_ENQUIRY"){
+
+                if(!items.has("amount")){
+                    return resolve("Missing Amount Key");
+                }
+            }
+            
             //Check Login Id Key
             if(!items.has("loginId")){
                 return resolve("Missing Login Id Key");
