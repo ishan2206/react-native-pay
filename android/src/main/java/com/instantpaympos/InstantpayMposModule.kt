@@ -150,8 +150,10 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
                 intent.putExtra("PRODUCTION", items.getString("production").toBoolean());
             }
 
-            val transAmount = items.getString("amount").toInt() * 100;
-            intent.putExtra("AMOUNT", transAmount);
+            if(getTransactionType != "BALANCE_ENQUIRY"){
+                val transAmount = items.getString("amount").toInt() * 100;
+                intent.putExtra("AMOUNT", transAmount);
+            }
 
             intent.putExtra("LOGIN_ID", items.getString("loginId"));
 
@@ -164,8 +166,9 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             }
 
             if(items.has("successTimeout")){
-                val getTimeSec = (items.getString("successTimeout").toInt() * 1000)+"L";
-                intent.putExtra("SUCCESS_DISMISS_TIMEOUT", getTimeSec);
+                val getTimeSec = items.getString("successTimeout").toInt() * 1000;
+                val makeStr = "L";
+                intent.putExtra("SUCCESS_DISMISS_TIMEOUT",  "$getTimeSec$makeStr");
             }
 
             if(items.has("optional1")){
