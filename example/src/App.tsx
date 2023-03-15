@@ -19,7 +19,8 @@ export default function App() {
         loginId : "2000016248",
         loginPassword : "Qwert@123",
         mobile : "7845682531",
-        successTimeout : "120"
+        successTimeout : "120",
+        isLogo: true
     }
 
     startTransaction(JSON.stringify(options)).then(res => {
