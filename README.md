@@ -138,7 +138,7 @@ Possible options values :
 
 Note : 
 
-1. **Transaction Type**  possibel values : "PURCHASE", "MICROATM"
+1. **Transaction Type**  possibel values : "PURCHASE", "MICROATM", "BALANCE_ENQUIRY", "UPI"
 2. Acceptable file formate for logo : png,jpg,jpeg
 3. use disconnectDevice method after every transactions.
 
