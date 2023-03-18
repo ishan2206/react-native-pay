@@ -150,10 +150,8 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
                 intent.putExtra("PRODUCTION", items.getString("production").toBoolean());
             }
 
-            if(getTransactionType != "BALANCE_ENQUIRY"){
-                val transAmount = items.getString("amount").toInt() * 100;
-                intent.putExtra("AMOUNT", transAmount);
-            }
+            val transAmount = items.getString("amount").toInt() * 100;
+            intent.putExtra("AMOUNT", transAmount);
 
             intent.putExtra("LOGIN_ID", items.getString("loginId"));
 
@@ -287,12 +285,8 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             }
 
             //Check Amount Key
-
-            if(getTransactionType!="BALANCE_ENQUIRY"){
-
-                if(!items.has("amount")){
-                    return resolve("Missing Amount Key");
-                }
+            if(!items.has("amount")){
+                return resolve("Missing Amount Key");
             }
             
             //Check Login Id Key
