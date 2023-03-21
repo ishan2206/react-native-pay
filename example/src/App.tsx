@@ -18,7 +18,7 @@ export default function App() {
         amount : 101.112356,
         loginId : "2000016248",
         loginPassword : "Qwert@123",
-        mobile : "7845682531",
+        mobile : "",
         successTimeout : "120",
         isLogo: true
     }
