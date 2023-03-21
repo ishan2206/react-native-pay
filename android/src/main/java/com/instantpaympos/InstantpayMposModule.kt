@@ -151,13 +151,15 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             }
 
             val transAmount = items.getString("amount").toFloat() * 100;
-            intent.putExtra("AMOUNT", transAmount);
+            intent.putExtra("AMOUNT", transAmount.toInt());
 
             intent.putExtra("LOGIN_ID", items.getString("loginId"));
 
             intent.putExtra("LOGIN_PASSWORD", items.getString("loginPassword"));
 
-            intent.putExtra("MOBILE_NUMBER", items.getString("mobile"));
+            if(items.has("mobile")){
+                intent.putExtra("MOBILE_NUMBER", items.getString("mobile"));
+            }
 
             if(items.has("customerRefNo")){
                 intent.putExtra("CRN_U", items.getString("customerRefNo"));
@@ -297,11 +299,6 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             //Check Login Password Key
             if(!items.has("loginPassword")){
                 return resolve("Missing Login Password Key");
-            }
-
-            //Check Mobile Key
-            if(!items.has("mobile")){
-                return resolve("Missing Mobile Key");
             }
 
             startPayment(options);

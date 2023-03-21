@@ -15,7 +15,7 @@ export default function App() {
         transactionType : 'PURCHASE',
         debugMode : true,
         production : true,
-        amount : 1,
+        amount : 101.112356,
         loginId : "2000016248",
         loginPassword : "Qwert@123",
         mobile : "7845682531",
