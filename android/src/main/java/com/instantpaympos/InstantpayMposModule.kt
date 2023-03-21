@@ -150,7 +150,7 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
                 intent.putExtra("PRODUCTION", items.getString("production").toBoolean());
             }
 
-            val transAmount = items.getString("amount").toInt() * 100;
+            val transAmount = items.getString("amount").toFloat() * 100;
             intent.putExtra("AMOUNT", transAmount);
 
             intent.putExtra("LOGIN_ID", items.getString("loginId"));
