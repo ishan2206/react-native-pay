@@ -116,7 +116,7 @@ Possible options values :
 | transactionType   | Transaction Type                                   | string     | Mandatory      |
 | debugMode         | Debug Mode                                         | boolean    | Optional       |
 | production        | Enable for Production                              | boolean    | Mandatory      |
-| amount            | Amount                                             | int        | Mandatory      |
+| amount            | Amount                                             | int        | Optional      |
 | loginId           | Login Id for login                                 | string     | Mandatory      |
 | loginPassword     | Login password for login                           | string     | Mandatory      |
 | mobile            | mobile for sending SMS                             | string     | Mandatory      |
