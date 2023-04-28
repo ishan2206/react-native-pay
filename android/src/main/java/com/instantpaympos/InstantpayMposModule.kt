@@ -51,13 +51,17 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
                             res.put("tvr",data.getStringExtra("tvr"))
                             res.put("tsi",data.getStringExtra("tsi"))
                             res.put("approvalCode",data.getStringExtra("approval_code"))
-                            res.put("network",data.getStringExtra("network"))
+                            res.put("customerRefNo",data.getStringExtra("crn_u"))
+                            //res.put("network",data.getStringExtra("network"))
                             res.put("cardApplicationName",data.getStringExtra("card_application_name"))
                             res.put("cardHolderName",data.getStringExtra("card_holder_name"))
                             res.put("appVersion",data.getStringExtra("app_version"))
                             res.put("cardType",data.getStringExtra("card_type"))
+                            res.put("applicationIdentifier",data.getStringExtra("aid"))
                             res.put("accountBalance",data.getStringExtra("account_balance"))
+                            res.put("amount",data.getStringExtra("amount"))
                             res.put("transactionType",data.getStringExtra("transaction_type"))
+                            res.put("datetime",data.getStringExtra("datetime"))
                         }
 
                         return resolve("Transaction Successfull", SUCCESS, res.toString());

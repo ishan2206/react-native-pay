@@ -53,7 +53,7 @@ Then reference the library in the dependency section:
 
 ```
 dependencies { 
-    implementation 'in.credopay.payment.sdk:vm30-payment-sdk:3.0.3' 
+    implementation 'in.credopay.payment.sdk:vm30-payment-sdk:3.0.10' 
 }
 
 ```
@@ -72,7 +72,7 @@ the SDK and then can be implemented externally.
 
 ```
 dependencies {
-    implementation ('in.credopay.payment.sdk:vm30-payment-sdk:3.0.3')  
+    implementation ('in.credopay.payment.sdk:vm30-payment-sdk:3.0.10')  
     {
         exclude module:'retrofit' 
     }
