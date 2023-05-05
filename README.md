@@ -204,3 +204,10 @@ If you have enabled “minify”, you will need to add this config to your Progu
 
 ```
 
+## License
+
+MIT
+
+---
+
+Made with [Instantpay](https://www.instantpay.in)
