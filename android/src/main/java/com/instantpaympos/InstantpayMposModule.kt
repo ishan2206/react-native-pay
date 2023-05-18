@@ -172,7 +172,7 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             if(items.has("successTimeout")){
                 val getTimeSec = items.getString("successTimeout").toInt() * 1000L;
                 //val makeStr = "L";
-                intent.putExtra("SUCCESS_DISMISS_TIMEOUT",  "$getTimeSec");
+                intent.putExtra("SUCCESS_DISMISS_TIMEOUT",  getTimeSec);
             }
 
             if(items.has("optional1")){
