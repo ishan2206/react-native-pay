@@ -1,6 +1,6 @@
 {
   "name": "react-native-instantpay-mpos",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "An mPOS (mobile point-of-sale) is a smartphone, tablet or dedicated wireless device that performs the functions of a cash register or electronic point-of-sale terminal (POS terminal) wirelessly.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
