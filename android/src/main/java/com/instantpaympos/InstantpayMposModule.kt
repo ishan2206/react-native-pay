@@ -154,8 +154,9 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
                 intent.putExtra("PRODUCTION", items.getString("production").toBoolean());
             }
 
-            val transAmount = items.getString("amount").toFloat() * 100;
-            intent.putExtra("AMOUNT", transAmount.toInt());
+            val transAmount = items.getString("amount");
+            var origAmount = if(transAmount === "") "" else transAmount.toFloat();
+            intent.putExtra("AMOUNT", origAmount);
 
             intent.putExtra("LOGIN_ID", items.getString("loginId"));
 
@@ -288,11 +289,6 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             //Check Production Key
             if(!items.has("production")){
                 return resolve("Missing Production Key");
-            }
-
-            //Check Amount Key
-            if(!items.has("amount")){
-                return resolve("Missing Amount Key");
             }
             
             //Check Login Id Key
