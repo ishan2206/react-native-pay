@@ -155,7 +155,7 @@ class InstantpayMposModule(reactContext: ReactApplicationContext) : ReactContext
             }
 
             val transAmount = items.getString("amount");
-            var origAmount = if(transAmount === "") "" else transAmount.toFloat();
+            var origAmount = if(transAmount === "") "0" else transAmount.toFloat();
             intent.putExtra("AMOUNT", origAmount);
 
             intent.putExtra("LOGIN_ID", items.getString("loginId"));
